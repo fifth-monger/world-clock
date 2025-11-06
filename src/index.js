@@ -1,22 +1,13 @@
-function updateTime() {
-  let kyotoElement = document.querySelector("#kyoto");
-  if (kyotoElement) {
-    let kyotoDateElement = kyotoElement.querySelector(".date");
-    let kyotoTimeElement = kyotoElement.querySelector(".time");
-    let currentKyotoTime = moment().tz("Asia/Tokyo");
-    kyotoDateElement.innerHTML = currentKyotoTime.format("MMMM Do YYYY");
-    kyotoTimeElement.innerHTML = currentKyotoTime.format(
-      "h:mm:ss [<small>]A[</small>]"
-    );
-  }
+let cityInterval;
 
-  let denmarkElement = document.querySelector("#denmark");
-  if (denmarkElement) {
-    let denmarkDateElement = denmarkElement.querySelector(".date");
-    let denmarkTimeElement = denmarkElement.querySelector(".time");
-    let currentDenmarkTime = moment().tz("Europe/Copenhagen");
-    denmarkDateElement.innerHTML = currentDenmarkTime.format("MMMM Do YYYY");
-    denmarkTimeElement.innerHTML = currentDenmarkTime.format(
+function updateTime() {
+  let currentElement = document.querySelector("#current");
+  if (currentElement) {
+    let currentDateElement = currentElement.querySelector(".date");
+    let currentTimeElement = currentElement.querySelector(".time");
+    let currentTime = moment().tz("America/Chicago");
+    currentDateElement.innerHTML = currentTime.format("MMMM Do YYYY");
+    currentTimeElement.innerHTML = currentTime.format(
       "h:mm:ss [<small>]A[</small>]"
     );
   }
@@ -24,10 +15,15 @@ function updateTime() {
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+  }
   let cityName = event.target.options[event.target.selectedIndex].text;
-  let cityTime = moment().tz(cityTimeZone);
   let citiesElement = document.querySelector("#cities");
-  citiesElement.innerHTML = `
+
+  function displayCityTime() {
+    let cityTime = moment().tz(cityTimeZone);
+    citiesElement.innerHTML = `
   <div class="city">
     <div>
         <h2>${cityName}</h2>
@@ -37,8 +33,12 @@ function updateCity(event) {
           "h:mm:ss [<small>]A[</small>]"
         )}</div>
         </div>`;
-}
+  }
+  clearInterval(cityInterval);
 
+  displayCityTime();
+  cityInterval = setInterval(displayCityTime, 1000);
+}
 updateTime();
 setInterval(updateTime, 1000);
 
