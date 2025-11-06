@@ -35,9 +35,9 @@ function updateCity(event) {
         </div>`;
   }
   clearInterval(cityInterval);
-
   displayCityTime();
   cityInterval = setInterval(displayCityTime, 1000);
+  event.target.selectedIndex = 0;
 }
 updateTime();
 setInterval(updateTime, 1000);

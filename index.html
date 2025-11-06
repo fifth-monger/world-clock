@@ -6,45 +6,41 @@
     <link rel="stylesheet" href="src/styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.6.0/moment-timezone-with-data-1970-2030.min.js"></script>
-  </head>
     <title>Earth Hours</title>
   </head>
   <body>
     <div class="container">
       <h1>World Clock</h1>
       <select name="" id="city">
-        <option value="">Select a city...</option>
+        <option value="" disabled selected hidden>Select a city...</option>
         <option value="current">Current Location</option>
         <option value="Europe/Copenhagen">Denmark</option>
         <option value="Asia/Tokyo">Kyoto</option>
-        <option value="Atlantic/Reykjavik">Reyjavk</option>
+        <option value="Atlantic/Reykjavik">Reyjavík</option>
       </select>
       <div id="cities">
         <div class="city" id="current">
           <div>
-          <h2>Current Location</h2>
-          <div class="date"></div>
+            <h2>Current Location</h2>
+            <div class="date"></div>
           </div>
           <div class="time"></div>
         </div>
-      
       </div>
     </div>
-    <footer> 
-        <p><em>world clock project in progress ... </em></p>
-        Coded by
-        <a href="https://github.com/fifth-monger" target="_blank"
-          >Victoria Garcia</a
-        >
-        • Open-sourced on
-        <a
-          href="https://github.com/fifth-monger/world-clock"
-          target="_blank"
-          >GitHub</a
-        >
-        • Hosted by
-        <a href="https://earthhours.netlify.app/" target="_blank"
-          >Netlify</a</footer>
-      <script src="src/index.js"></script>
+    <footer>
+      <p><em>world clock project in progress ... </em></p>
+      Coded by
+      <a href="https://github.com/fifth-monger" target="_blank"
+        >Victoria Garcia</a
+      >
+      • Open-sourced on
+      <a href="https://github.com/fifth-monger/world-clock" target="_blank"
+        >GitHub</a
+      >
+      • Hosted by
+      <a href="https://earthhours.netlify.app/" target="_blank">Netlify</a>
+    </footer>
+    <script src="src/index.js"></script>
   </body>
 </html>
